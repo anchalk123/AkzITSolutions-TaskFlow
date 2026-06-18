@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Premium Task Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="slide">
+            <div class="logo">
+                <i class="fa-solid fa-bolt"></i> TaskFlow
+            </div>
+            <ul>
+                <li class="active" onclick="showDashboard()"><i class="fa-solid fa-chart-line"></i> Dashboard</li>
+                <li onclick="showAllTasks()"><i class="fa-solid fa-list-check"></i> All Tasks</li>
+                <li onclick="setFilter('complete')"><i class="fa-solid fa-circle-check"></i> Completed</li>
+                <li onclick="setFilter('pending')"><i class="fa-solid fa-clock"></i> Pending</li>
+            </ul>
+
+            <div class="profile-section">
+                <div class="profile-avatar" id="avatar">👤</div>
+                <p id="usernameDisplay" style="font-weight:600; margin-bottom:12px;">Guest User</p>
+                <button class="login-btn" id="loginBtn" onclick="showLoginModal()">Login / Sign Up</button>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="header">
+                <h1 id="title">Dashboard</h1>
+                <div class="search-wrapper">
+                    <input type="text" id="searchtask" placeholder="🔍 Search tasks..." onkeyup="renderTasks()">
+                    <button class="theme-toggle-btn" onclick="toggleDarkMode()" title="Toggle Design Theme">
+                        <i class="fa-solid fa-moon" id="theme-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="tasks" id="statsContainer">
+                <div class="total work" onclick="setFilter('all')">
+                    <h2 id="fulltask">0</h2>
+                    <p>Total Tasks</p>
+                </div>
+                <div class="total complete" onclick="setFilter('complete')">
+                    <h2 id="completetask">0</h2>
+                    <p>Completed</p>
+                </div>
+                <div class="total pending" onclick="setFilter('pending')">
+                    <h2 id="pendingtask">0</h2>
+                    <p>Pending</p>
+                </div>
+            </div>
+
+            <div class="taskenter" id="creationFormPanel">
+                <div class="input-row">
+                    <input type="text" id="taskinput" placeholder="What needs to be accomplished today?">
+                    <button onclick="addTask()">Add Task</button>
+                </div>
+                <div class="filters-row">
+                    <select id="taskCategory">
+                        <option value="Work">💼 Work</option>
+                        <option value="Personal">🏠 Personal</option>
+                        <option value="Shopping">🛒 Shopping</option>
+                    </select>
+                    <select id="taskPriority">
+                        <option value="Low Priority">🟢 Low Priority</option>
+                        <option value="Medium Priority">🟡 Medium Priority</option>
+                        <option value="High Priority">🔴 High Priority</option>
+                    </select>
+                    <input type="date" id="taskDueDate">
+                </div>
+            </div>
+
+            <div id="tasklist"></div>
+        </div>
+    </div>
+
+    <div id="loginModal">
+        <div class="modal-box">
+            <h2>Welcome Back</h2>
+            <p>Please enter your account details to access full tracking</p>
+            <input type="text" id="loginUsername" placeholder="Username" value="user">
+            <input type="password" id="loginPassword" placeholder="Password" value="1234">
+            <button onclick="login()">Sign In Account</button>
+        </div>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>
