@@ -33,7 +33,7 @@ A modern, beautiful, and fully functional Task Management Web Application built 
 
 - HTML5
 - CSS3 (with Variables and Modern Design)
-- Vanilla JavaScript
+- JavaScript
 - Font Awesome Icons
 - LocalStorage
 
